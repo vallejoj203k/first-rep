@@ -1,0 +1,1906 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Clínica Dental Natural Stetic – Tecnología avanzada y atención personalizada para tu salud oral en el corazón de la ciudad.">
+<meta name="keywords" content="clínica dental, odontología, ortodoncia, blanqueamiento, implantes, diseño de sonrisa">
+<title>Natural Stetic | Clínica Dental Premium</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy: #0D1B2A;
+    --navy-mid: #1B3A5C;
+    --mint: #3EC9B0;
+    --mint-light: #A8EDE4;
+    --mint-soft: #E6F9F6;
+    --cream: #F7F4EF;
+    --white: #FFFFFF;
+    --text: #2C3E50;
+    --text-muted: #7F8C9A;
+    --gold: #C9A84C;
+    --shadow-sm: 0 4px 24px rgba(13,27,42,0.08);
+    --shadow-md: 0 12px 40px rgba(13,27,42,0.14);
+    --shadow-lg: 0 24px 64px rgba(13,27,42,0.18);
+    --radius: 16px;
+    --radius-lg: 24px;
+    --transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    background: var(--white);
+    overflow-x: hidden;
+    line-height: 1.65;
+  }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--cream); }
+  ::-webkit-scrollbar-thumb { background: var(--mint); border-radius: 99px; }
+
+  /* ─── NAVBAR ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 76px;
+    transition: var(--transition);
+    background: transparent;
+  }
+  nav.scrolled {
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 2px 30px rgba(13,27,42,0.10);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+  .nav-logo-icon {
+    width: 40px; height: 40px;
+    background: linear-gradient(135deg, var(--mint), var(--navy-mid));
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .nav-logo-icon svg { width: 22px; height: 22px; fill: white; }
+  .nav-logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 700;
+    color: var(--white);
+    transition: var(--transition);
+  }
+  nav.scrolled .nav-logo-text { color: var(--navy); }
+
+  .nav-links {
+    display: flex; align-items: center; gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.875rem; font-weight: 500;
+    color: rgba(255,255,255,0.88);
+    transition: var(--transition);
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 2px;
+    background: var(--mint);
+    transition: var(--transition);
+    border-radius: 99px;
+  }
+  .nav-links a:hover::after { width: 100%; }
+  nav.scrolled .nav-links a { color: var(--text); }
+  .nav-links a:hover { color: var(--mint); }
+
+  .nav-cta {
+    background: var(--mint); color: var(--navy) !important;
+    padding: 10px 22px; border-radius: 99px;
+    font-weight: 600 !important; font-size: 0.85rem !important;
+    transition: var(--transition);
+    box-shadow: 0 4px 20px rgba(62,201,176,0.35);
+  }
+  .nav-cta:hover {
+    background: var(--navy) !important; color: var(--white) !important;
+    box-shadow: 0 8px 30px rgba(13,27,42,0.3);
+    transform: translateY(-1px);
+  }
+  .nav-cta::after { display: none !important; }
+
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px; cursor: pointer;
+    background: none; border: none; padding: 6px;
+  }
+  .hamburger span {
+    display: block; width: 24px; height: 2px;
+    background: var(--white); border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease, background 0.35s;
+  }
+  nav.scrolled .hamburger span { background: var(--navy); }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── HERO ─── */
+  #hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex; align-items: center;
+    overflow: hidden;
+    background: var(--navy);
+  }
+  .hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('img/hero.png') center/cover no-repeat;
+  background-attachment: fixed;
+}
+  .hero-pattern {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image: radial-gradient(circle, #fff 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .hero-shape {
+    position: absolute; right: -80px; top: -80px;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(62,201,176,0.12), transparent 70%);
+  }
+  .hero-shape-2 {
+    position: absolute; left: -60px; bottom: -60px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.08), transparent 70%);
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 1200px; margin: 0 auto; padding: 0 5%;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+    align-items: center; width: 100%;
+  }
+  .hero-text { animation: fadeInUp 0.9s ease both; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(62,201,176,0.15);
+    border: 1px solid rgba(62,201,176,0.3);
+    border-radius: 99px; padding: 6px 16px;
+    font-size: 0.78rem; font-weight: 500;
+    color: var(--mint); letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .hero-badge span { width: 6px; height: 6px; border-radius: 50%; background: var(--mint); }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 700; line-height: 1.15;
+    color: var(--white); margin-bottom: 1.25rem;
+  }
+  .hero-title em { font-style: italic; color: var(--mint); }
+  .hero-subtitle {
+    font-size: 1.05rem; color: rgb(255, 255, 255);
+    line-height: 1.7; margin-bottom: 2.5rem;
+    max-width: 460px;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--mint); color: var(--navy);
+    padding: 14px 32px; border-radius: 99px;
+    font-weight: 600; font-size: 0.95rem;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 6px 30px rgba(62,201,176,0.4);
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(62,201,176,0.5);
+    background: #2fb89e;
+  }
+  .btn-outline {
+    background: transparent; color: var(--white);
+    padding: 14px 32px; border-radius: 99px;
+    font-weight: 500; font-size: 0.95rem;
+    text-decoration: none; border: 2px solid rgba(255,255,255,0.3);
+    transition: var(--transition);
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-outline:hover {
+    border-color: var(--mint); color: var(--mint);
+    background: rgba(62,201,176,0.08);
+  }
+  .hero-stats {
+    display: flex; gap: 2.5rem; margin-top: 3rem; flex-wrap: wrap;
+  }
+  .hero-stat { }
+  .hero-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700; color: var(--white);
+    line-height: 1;
+  }
+  .hero-stat-num span { color: var(--mint); }
+  .hero-stat-label {
+    font-size: 0.78rem; color: rgba(255,255,255,0.5);
+    text-transform: uppercase; letter-spacing: 0.06em; margin-top: 4px;
+  }
+
+  .hero-visual {
+    animation: fadeInRight 0.9s 0.2s ease both;
+    position: relative;
+  }
+  .hero-card {
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius-lg); padding: 2.5rem;
+    position: relative;
+  }
+  .hero-card-img {
+    width: 100%; height: 300px;
+    background: linear-gradient(135deg, rgba(62,201,176,0.2), rgba(27,58,92,0.4));
+    border-radius: var(--radius); margin-bottom: 1.5rem;
+    overflow: hidden; position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-img-placeholder {
+    width: 100%; height: 100%;
+    background: linear-gradient(160deg, #1B3A5C 0%, #0D2A3A 40%, #163020 100%);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .tooth-3d {
+    width: 120px; height: 120px; opacity: 0.9;
+  }
+  .floating-badge {
+    position: absolute; bottom: -16px; right: -16px;
+    background: var(--white); border-radius: var(--radius);
+    padding: 14px 20px; box-shadow: var(--shadow-md);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .floating-badge-icon {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--mint), #2fb89e);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .floating-badge-icon svg { width: 20px; height: 20px; fill: white; }
+  .floating-badge-text strong { display: block; font-size: 0.85rem; color: var(--navy); }
+  .floating-badge-text span { font-size: 0.75rem; color: var(--text-muted); }
+  .floating-badge-2 {
+    position: absolute; top: -16px; left: -16px;
+    background: var(--navy); border-radius: var(--radius);
+    padding: 12px 18px; box-shadow: var(--shadow-md);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .floating-badge-2 span { font-size: 0.8rem; color: rgba(255,255,255,0.9); font-weight: 500; }
+  .stars-inline { color: var(--gold); font-size: 0.85rem; }
+
+  /* ─── SECTION BASE ─── */
+  section { padding: 100px 5%; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--mint);
+    margin-bottom: 1rem;
+  }
+  .section-label::before {
+    content: ''; display: block; width: 24px; height: 2px;
+    background: var(--mint); border-radius: 99px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 700; color: var(--navy); line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .section-title em { font-style: italic; color: var(--mint); }
+  .section-subtitle {
+    font-size: 1rem; color: var(--text-muted);
+    max-width: 520px; line-height: 1.7;
+  }
+  .section-header { margin-bottom: 3.5rem; }
+  .section-header.center { text-align: center; }
+  .section-header.center .section-label { justify-content: center; }
+  .section-header.center .section-label::before { display: none; }
+  .section-header.center .section-label::after {
+    content: ''; display: block; width: 24px; height: 2px;
+    background: var(--mint); border-radius: 99px;
+  }
+  .section-header.center .section-subtitle { margin: 0 auto; }
+
+  /* ─── SOBRE NOSOTROS ─── */
+  #sobre {
+    background: var(--cream);
+    position: relative; overflow: hidden;
+  }
+  #sobre::before {
+    content: ''; position: absolute; top: -80px; right: -80px;
+    width: 360px; height: 360px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(62,201,176,0.1), transparent 70%);
+  }
+  .sobre-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+  }
+  .sobre-visual { position: relative; }
+  .sobre-img {
+    width: 100%; height: clamp(260px, 40vw, 440px);
+    border-radius: var(--radius-lg); overflow: hidden;
+    position: relative;
+    background: linear-gradient(160deg, #C8E6E2 0%, #A8D8D3 50%, #7EC8C0 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .clinic-illustration {
+    width: 280px; opacity: 0.85;
+  }
+  .sobre-accent {
+    position: absolute; bottom: -20px; right: -20px;
+    background: var(--navy); color: white;
+    border-radius: var(--radius); padding: 24px 28px;
+    box-shadow: var(--shadow-md);
+    text-align: center;
+  }
+  .sobre-accent-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem; font-weight: 700; color: var(--mint); line-height: 1;
+  }
+  .sobre-accent-text { font-size: 0.78rem; color: rgba(255,255,255,0.7); margin-top: 4px; }
+
+  .sobre-text p {
+    font-size: 1rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 1.25rem;
+  }
+  .valores { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+  .valor-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    background: var(--white); border-radius: var(--radius);
+    padding: 16px 20px; box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+  }
+  .valor-item:hover { transform: translateX(6px); box-shadow: var(--shadow-md); }
+  .valor-icon {
+    width: 40px; height: 40px; min-width: 40px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--mint-soft), var(--mint-light));
+    display: flex; align-items: center; justify-content: center;
+  }
+  .valor-icon svg { width: 20px; height: 20px; }
+  .valor-title { font-weight: 600; font-size: 0.9rem; color: var(--navy); margin-bottom: 2px; }
+  .valor-desc { font-size: 0.82rem; color: var(--text-muted); }
+
+  /* ─── SERVICIOS ─── */
+  #servicios { background: var(--white); }
+  .servicios-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+  }
+  .servicio-card {
+    background: var(--white);
+    border: 1.5px solid rgba(13,27,42,0.07);
+    border-radius: var(--radius-lg); padding: 2rem;
+    transition: var(--transition); position: relative;
+    overflow: hidden; cursor: pointer;
+  }
+  .servicio-card::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--mint-soft), transparent);
+    opacity: 0; transition: var(--transition);
+    border-radius: var(--radius-lg);
+  }
+  .servicio-card:hover { border-color: var(--mint); box-shadow: var(--shadow-md); transform: translateY(-6px); }
+  .servicio-card:hover::before { opacity: 1; }
+  .servicio-icon {
+    width: 60px; height: 60px; border-radius: var(--radius);
+    background: linear-gradient(135deg, var(--mint-soft), var(--mint-light));
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.25rem; position: relative; z-index: 1;
+    transition: var(--transition);
+  }
+  .servicio-card:hover .servicio-icon {
+    background: linear-gradient(135deg, var(--mint), #2fb89e);
+  }
+  .servicio-card:hover .servicio-icon svg { fill: white; }
+  .servicio-icon svg { width: 28px; height: 28px; fill: var(--mint); transition: var(--transition); }
+  .servicio-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem; font-weight: 600;
+    color: var(--navy); margin-bottom: 0.6rem;
+    position: relative; z-index: 1;
+  }
+  .servicio-desc {
+    font-size: 0.88rem; color: var(--text-muted); line-height: 1.7;
+    position: relative; z-index: 1;
+  }
+  .servicio-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 0.82rem; font-weight: 600; color: var(--mint);
+    text-decoration: none; margin-top: 1rem;
+    position: relative; z-index: 1;
+    transition: var(--transition);
+  }
+  .servicio-link:hover { gap: 10px; }
+
+  /* ─── DOCTORES ─── */
+  #doctores { background: var(--cream); }
+  .doctores-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+  }
+  .doctor-card {
+    background: var(--white); border-radius: var(--radius-lg);
+    overflow: hidden; box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+  }
+  .doctor-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+  .doctor-photo {
+    height: 400px;  position: relative;
+    overflow: hidden;
+  }
+  .doctor-photo-inner {
+    width: 100%; height: 100%;
+    display: flex; align-items: flex-end; justify-content: center;
+    position: relative;
+  }
+  .doctor-avatar {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .doctor-info { padding: 1.5rem; }
+  .doctor-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem; font-weight: 700;
+    color: var(--navy); margin-bottom: 4px;
+  }
+  .doctor-specialty {
+    font-size: 0.8rem; color: var(--mint);
+    font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.06em; margin-bottom: 8px;
+  }
+  .doctor-exp {
+    font-size: 0.82rem; color: var(--text-muted);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .doctor-exp::before { content: '●'; color: var(--mint); font-size: 0.5rem; }
+
+  /* ─── TESTIMONIOS ─── */
+  #testimonios { background: var(--navy); overflow: hidden; position: relative; }
+  #testimonios::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(62,201,176,0.08), transparent);
+  }
+  #testimonios .section-title { color: var(--white); }
+  #testimonios .section-subtitle { color: rgba(255,255,255,0.55); }
+  .testimonios-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    position: relative; z-index: 1;
+  }
+  .testimonio-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-lg); padding: 2rem;
+    transition: var(--transition);
+  }
+  .testimonio-card:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(62,201,176,0.3);
+    transform: translateY(-4px);
+  }
+  .testimonio-stars { color: var(--gold); font-size: 1rem; margin-bottom: 1rem; letter-spacing: 2px; }
+  .testimonio-text {
+    font-size: 0.95rem; color: rgba(255,255,255,0.82);
+    line-height: 1.75; margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+  .testimonio-text::before { content: '"'; font-size: 3rem; color: var(--mint); line-height: 0; vertical-align: -1.2rem; margin-right: 4px; font-family: 'Playfair Display', serif; }
+  .testimonio-author { display: flex; align-items: center; gap: 12px; }
+  .testimonio-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700; color: var(--navy);
+  }
+  .testimonio-name { font-weight: 600; font-size: 0.9rem; color: var(--white); }
+  .testimonio-meta { font-size: 0.78rem; color: rgba(255,255,255,0.45); }
+  .avg-rating {
+    display: flex; align-items: center; gap: 12px;
+    background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 99px; padding: 8px 20px;
+    display: inline-flex; margin-bottom: 2.5rem;
+  }
+  .avg-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--gold); line-height: 1; }
+  .avg-detail { }
+  .avg-stars { color: var(--gold); font-size: 0.85rem; }
+  .avg-count { font-size: 0.75rem; color: rgba(255,255,255,0.45); }
+
+  /* ─── GALERÍA ─── */
+  #galeria { background: var(--white); }
+  .galeria-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 240px 240px;
+    gap: 1rem;
+  }
+  .galeria-item {
+    border-radius: var(--radius); overflow: hidden;
+    position: relative; cursor: pointer;
+  }
+  .galeria-item:first-child { grid-row: span 2; }
+  .galeria-inner {
+    width: 100%; height: 100%;
+    transition: transform 0.5s ease;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .galeria-item:hover .galeria-inner { transform: scale(1.06); }
+  .galeria-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(13,27,42,0.75), transparent 60%);
+    opacity: 0; transition: var(--transition);
+    display: flex; align-items: flex-end;
+    padding: 1.5rem;
+  }
+  .galeria-item:hover .galeria-overlay { opacity: 1; }
+  .galeria-label {
+    font-size: 0.85rem; font-weight: 600;
+    color: var(--white); text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .gi-1 { background: linear-gradient(160deg, #B8E4DF 0%, #7ECDC4 40%, #5BB8AF 100%); }
+  .gi-2 { background: linear-gradient(160deg, #C5DCF5 0%, #8AB8E8 100%); }
+  .gi-3 { background: linear-gradient(160deg, #D5EFE8 0%, #9DD4CB 100%); }
+  .gi-4 { background: linear-gradient(160deg, #E8F4E8 0%, #A8D4B4 100%); }
+  .gi-5 { background: linear-gradient(160deg, #F0E8D8 0%, #D4BC94 100%); }
+  .gi-icon { opacity: 0.6; }
+
+  /* ─── AGENDA ─── */
+  #agenda {
+    background: linear-gradient(160deg, var(--navy) 0%, #163040 100%);
+    position: relative; overflow: hidden;
+  }
+  #agenda::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(62,201,176,0.1), transparent 70%);
+  }
+  #agenda .section-title { color: var(--white); }
+  #agenda .section-subtitle { color: rgba(255,255,255,0.55); }
+  .agenda-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+  }
+  .agenda-info { position: relative; z-index: 1; }
+  .agenda-bullets { display: flex; flex-direction: column; gap: 1rem; margin-top: 2.5rem; }
+  .agenda-bullet {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 0.9rem; color: rgba(255,255,255,0.75);
+  }
+  .bullet-dot {
+    width: 8px; height: 8px; min-width: 8px;
+    border-radius: 50%; background: var(--mint);
+  }
+
+  .agenda-form {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(20px);
+    border-radius: var(--radius-lg); padding: 2.5rem;
+    position: relative; z-index: 1;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { margin-bottom: 1.25rem; }
+  .form-group label {
+    display: block; font-size: 0.8rem; font-weight: 600;
+    color: rgba(255,255,255,0.65); margin-bottom: 6px;
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.08);
+    border: 1.5px solid rgba(255,255,255,0.14);
+    border-radius: 10px; padding: 12px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem; color: var(--white);
+    transition: var(--transition); outline: none;
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+  .form-group select option { background: var(--navy); color: var(--white); }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--mint);
+    background: rgba(62,201,176,0.08);
+    box-shadow: 0 0 0 3px rgba(62,201,176,0.15);
+  }
+  .btn-submit {
+    width: 100%; padding: 15px;
+    background: linear-gradient(135deg, var(--mint), #2fb89e);
+    color: var(--navy); font-weight: 700;
+    font-size: 0.95rem; border: none; cursor: pointer;
+    border-radius: 10px; font-family: 'DM Sans', sans-serif;
+    transition: var(--transition);
+    box-shadow: 0 6px 30px rgba(62,201,176,0.35);
+    letter-spacing: 0.02em;
+  }
+  .btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(62,201,176,0.5);
+  }
+
+  /* ─── CONTACTO ─── */
+  #contacto { background: var(--cream); }
+  .contacto-grid {
+    display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem; align-items: start;
+  }
+  .contacto-items { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
+  .contacto-item {
+    display: flex; align-items: flex-start; gap: 1rem;
+    background: var(--white); border-radius: var(--radius);
+    padding: 1.25rem; box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+  }
+  .contacto-item:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+  .contacto-icon {
+    width: 46px; height: 46px; min-width: 46px; border-radius: 12px;
+    background: linear-gradient(135deg, var(--mint-soft), var(--mint-light));
+    display: flex; align-items: center; justify-content: center;
+  }
+  .contacto-icon svg { width: 22px; height: 22px; fill: var(--mint); }
+  .contacto-item-title { font-weight: 600; font-size: 0.85rem; color: var(--navy); margin-bottom: 2px; }
+  .contacto-item-text { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+  .contacto-item-text a { color: var(--mint); text-decoration: none; }
+  .horarios { margin-top: 1.5rem; }
+  .horario-row {
+    display: flex; justify-content: space-between;
+    font-size: 0.85rem; padding: 10px 0;
+    border-bottom: 1px solid rgba(13,27,42,0.07);
+    color: var(--text-muted);
+  }
+  .horario-row span:first-child { font-weight: 500; color: var(--navy); }
+  .horario-open { color: var(--mint) !important; font-weight: 600 !important; }
+  .mapa-wrapper {
+    border-radius: var(--radius-lg); overflow: hidden;
+    box-shadow: var(--shadow-md); height: 100%;
+  }
+  .mapa-wrapper iframe { display: block; width: 100%; height: 420px; border: none; }
+  .mapa-placeholder {
+    width: 100%; height: 420px;
+    background: linear-gradient(160deg, #D8EDF8 0%, #B0CDE8 100%);
+    border-radius: var(--radius-lg);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 16px; color: var(--navy-mid);
+  }
+  .mapa-placeholder svg { width: 48px; height: 48px; fill: var(--navy-mid); opacity: 0.4; }
+  .mapa-placeholder p { font-size: 0.85rem; opacity: 0.5; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--navy);
+    padding: 60px 5% 30px;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem; margin-bottom: 3rem;
+  }
+  .footer-brand { }
+  .footer-logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none; margin-bottom: 1rem;
+  }
+  .footer-logo-icon {
+    width: 40px; height: 40px; border-radius: 12px;
+    background: linear-gradient(135deg, var(--mint), var(--navy-mid));
+    display: flex; align-items: center; justify-content: center;
+  }
+  .footer-logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700; color: var(--white);
+  }
+  .footer-desc {
+    font-size: 0.85rem; color: rgba(255,255,255,0.45);
+    line-height: 1.8; margin-bottom: 1.5rem; max-width: 260px;
+  }
+  .footer-social { display: flex; gap: 10px; }
+  .social-btn {
+    width: 38px; height: 38px; border-radius: 10px;
+    background: rgba(255,255,255,0.08);
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none; transition: var(--transition);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .social-btn:hover { background: var(--mint); border-color: var(--mint); }
+  .social-btn svg { width: 16px; height: 16px; fill: rgba(255,255,255,0.65); transition: var(--transition); }
+  .social-btn:hover svg { fill: var(--navy); }
+  .footer-col-title {
+    font-size: 0.8rem; font-weight: 700; color: var(--white);
+    text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.25rem;
+  }
+  .footer-links { display: flex; flex-direction: column; gap: 0.65rem; }
+  .footer-links a {
+    font-size: 0.85rem; color: rgba(255,255,255,0.45);
+    text-decoration: none; transition: var(--transition);
+  }
+  .footer-links a:hover { color: var(--mint); padding-left: 4px; }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 1.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-copy { font-size: 0.8rem; color: rgba(255,255,255,0.3); }
+  .footer-copy span { color: var(--mint); }
+
+  /* ─── WHATSAPP FLOAT ─── */
+  .whatsapp-float {
+    position: fixed; bottom: 28px; right: 28px;
+    width: 56px; height: 56px;
+    background: #25D366; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 6px 30px rgba(37,211,102,0.4);
+    text-decoration: none; z-index: 999;
+    transition: var(--transition);
+    animation: pulse 2s infinite;
+  }
+  .whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 40px rgba(37,211,102,0.5);
+  }
+  .whatsapp-float svg { width: 28px; height: 28px; fill: white; }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 6px 30px rgba(37,211,102,0.4); }
+    50% { box-shadow: 0 6px 50px rgba(37,211,102,0.7); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  .float-anim { animation: float 4s ease-in-out infinite; }
+
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─── RESPONSIVE ─── */
+
+  /* 1200px – Large tablets */
+  @media (max-width: 1200px) {
+    .hero-content { gap: 2.5rem; }
+    .doctores-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* 1024px – Tablets landscape */
+  @media (max-width: 1024px) {
+    .servicios-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .sobre-grid { gap: 2.5rem; }
+    .agenda-grid { gap: 2.5rem; }
+    .contacto-grid { gap: 2rem; }
+    .galeria-grid {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 220px 220px 220px;
+    }
+    .galeria-item:first-child { grid-row: span 2; }
+  }
+
+  /* 900px – Tablets portrait */
+  @media (max-width: 900px) {
+    .hero-content { grid-template-columns: 1fr; gap: 0; padding-top: 40px; }
+    .hero-visual { display: none; }
+    .hero-text { text-align: center; }
+    .hero-btns { justify-content: center; }
+    .hero-stats { justify-content: center; }
+    .hero-subtitle { margin-left: auto; margin-right: auto; }
+    .hero-badge { margin-left: auto; margin-right: auto; }
+    .sobre-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .sobre-visual { max-width: 520px; margin: 0 auto; }
+    .sobre-accent { right: -10px; bottom: -10px; padding: 18px 22px; }
+    .sobre-accent-num { font-size: 2rem; }
+    .doctor-card-single { grid-template-columns: 240px 1fr; gap: 2rem; }
+    .agenda-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .contacto-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .testimonios-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* 768px – Mobile landscape */
+  @media (max-width: 768px) {
+    /* Nav */
+    .nav-links { display: none !important; }
+    .hamburger { display: flex; }
+
+    /* Sections */
+    section { padding: 72px 4%; }
+    .section-title { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+
+    /* Hero */
+    #hero { min-height: 100svh; }
+    .hero-bg { background-attachment: scroll; } /* Fix iOS parallax bug */
+    .hero-content { padding: 100px 4% 60px; }
+    .hero-title { font-size: clamp(2rem, 8vw, 3rem); }
+    .hero-subtitle { font-size: 0.95rem; max-width: 100%; }
+    .hero-btns { flex-direction: column; align-items: center; gap: 0.75rem; }
+    .btn-primary, .btn-outline { width: 100%; max-width: 300px; justify-content: center; }
+    .hero-stats { gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+    .hero-stat-num { font-size: 1.7rem; }
+    .hero-stat-label { font-size: 0.72rem; }
+
+    /* Video */
+    .video-wrapper { border-radius: var(--radius); }
+    .video-wrapper iframe { height: auto !important; min-height: 400px; aspect-ratio: 9/14; }
+
+    /* Sobre */
+    .sobre-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .sobre-visual { max-width: 100%; }
+    .sobre-img { height: 280px; }
+    .sobre-accent { right: 8px; bottom: -12px; padding: 14px 18px; }
+    .sobre-accent-num { font-size: 1.8rem; }
+    .sobre-accent-text { font-size: 0.7rem; }
+    .sobre-text p { font-size: 0.93rem; }
+
+    /* Servicios */
+    .servicios-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .servicio-card { padding: 1.5rem; }
+
+    /* Doctores */
+    .doctor-single { padding: 0; }
+    .doctor-card-single {
+      grid-template-columns: 1fr;
+      text-align: center;
+      padding: 1.5rem;
+      gap: 1.5rem;
+    }
+    .doctor-photo-single img { height: 260px; width: 100%; max-width: 260px; margin: 0 auto; display: block; }
+    .doctor-exp { justify-content: center; }
+    .doctor-info-single .btn-primary { margin: 20px auto 0; display: inline-flex; }
+
+    /* Testimonios */
+    .testimonios-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .avg-rating { flex-wrap: wrap; }
+
+    /* Galería */
+    .galeria-grid {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 160px 160px 160px;
+    }
+    .galeria-item:first-child { grid-column: span 2; grid-row: span 1; }
+
+    /* Agenda */
+    .agenda-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .agenda-form { padding: 1.5rem; }
+    .form-row { grid-template-columns: 1fr; gap: 0; }
+
+    /* Contacto */
+    .contacto-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .mapa-wrapper iframe, .contacto-grid iframe { height: 280px !important; }
+    .mapa-placeholder { height: 280px; }
+
+    /* Redes */
+    .redes-container { gap: 1rem; }
+    .red-social { padding: 14px 20px; font-size: 0.9rem; }
+
+    /* Footer */
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
+    .footer-bottom { flex-direction: column; gap: 0.75rem; text-align: center; }
+    .footer-desc { max-width: 100%; }
+    footer { padding: 48px 4% 24px; }
+  }
+
+  /* 600px */
+  @media (max-width: 600px) {
+    .testimonios-grid { grid-template-columns: 1fr; }
+    .servicios-grid { grid-template-columns: 1fr; }
+    .galeria-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(5, 160px);
+    }
+    .galeria-item:first-child { grid-column: span 1; grid-row: span 1; }
+    .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  }
+
+  /* 480px – Small phones */
+  @media (max-width: 480px) {
+    section { padding: 60px 4%; }
+    nav { padding: 0 4%; height: 68px; }
+
+    .hero-content { padding: 90px 4% 50px; }
+    .hero-title { font-size: clamp(1.8rem, 9vw, 2.4rem); }
+    .hero-badge { font-size: 0.7rem; padding: 5px 12px; }
+    .hero-stats { gap: 1rem; }
+    .hero-stat-num { font-size: 1.5rem; }
+
+    .sobre-img { height: 240px; }
+    .sobre-accent { padding: 12px 14px; right: 4px; bottom: -8px; }
+    .sobre-accent-num { font-size: 1.5rem; }
+
+    .section-title { font-size: clamp(1.5rem, 7vw, 2rem); }
+    .section-subtitle { font-size: 0.88rem; }
+
+    .servicio-card { padding: 1.25rem; }
+    .servicio-icon { width: 50px; height: 50px; }
+    .servicio-icon svg { width: 22px; height: 22px; }
+
+    .doctor-card-single { padding: 1.25rem; }
+    .doctor-photo-single img { height: 220px; }
+
+    .testimonio-card { padding: 1.5rem; }
+    .testimonio-text { font-size: 0.88rem; }
+
+    .agenda-form { padding: 1.25rem; }
+    .btn-submit { font-size: 0.88rem; padding: 13px; }
+
+    .contacto-item { padding: 1rem; }
+    .redes-container { flex-direction: column; align-items: stretch; }
+    .red-social { justify-content: center; }
+
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-copy { font-size: 0.75rem; }
+    .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 16px; }
+    .whatsapp-float svg { width: 24px; height: 24px; }
+  }
+
+  /* 360px – Very small phones */
+  @media (max-width: 360px) {
+    .hero-title { font-size: 1.7rem; }
+    .btn-primary, .btn-outline { font-size: 0.88rem; padding: 12px 20px; }
+    .hero-stats { flex-direction: column; gap: 0.75rem; align-items: center; }
+    .hero-stat { text-align: center; }
+    .nav-logo-text { font-size: 1rem; }
+  }
+
+.doctor-single {
+  display: flex;
+  justify-content: center;
+}
+
+.doctor-card-single {
+  display: grid;
+  grid-template-columns: clamp(200px, 30%, 300px) 1fr;
+  gap: 3rem;
+  align-items: center;
+  background: var(--white);
+  padding: 2.5rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  max-width: 900px;
+  width: 100%;
+}
+
+.doctor-photo-single img {
+  width: 100%;
+  height: clamp(200px, 35vw, 320px);
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.doctor-info-single .doctor-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.doctor-info-single .doctor-specialty {
+  color: var(--mint);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.doctor-desc {
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin: 15px 0;
+}
+
+@media (max-width: 768px) {
+  .doctor-card-single {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+#redes {
+  background: var(--cream);
+}
+
+.redes-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.red-social {
+  background: var(--white);
+  padding: 20px 30px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.red-social:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  color: var(--mint);
+}
+
+.red-social .icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--mint-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.red-social svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--mint);
+}
+#video {
+  background: var(--white);
+}
+
+.video-wrapper {
+  max-width: 540px;
+  margin: 0 auto;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.video-wrapper iframe {
+  width: 100%;
+  height: auto;
+  min-height: 480px;
+  aspect-ratio: 4/5;
+}
+.instagram-media {
+  max-width: 100% !important;
+  width: 100% !important;
+  min-width: unset !important;
+}
+
+.video-wrapper {
+  display: flex;
+  justify-content: center;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.video-wrapper iframe {
+  max-width: 100% !important;
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C9.33 2 8 4 8 6c0 1.5.5 3 .5 4.5C8.5 12 7 13 6 14c-1 1-2 2.5-2 4.5 0 2 1.5 3.5 3 3.5.8 0 1.5-.3 2-.8C9.5 22 10.5 22 12 22s2.5 0 3-.8c.5.5 1.2.8 2 .8 1.5 0 3-1.5 3-3.5 0-2-1-3.5-2-4.5-1-1-2.5-2-2.5-3.5C15.5 9 16 7.5 16 6c0-2-1.33-4-4-4z"/></svg>
+    </div>
+    <span class="nav-logo-text">Natural Stetic</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Nosotros</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#doctores">Doctores</a></li>
+    <li><a href="#testimonios">Testimonios</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="#agenda" class="nav-cta">Agendar cita</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-shape"></div>
+  <div class="hero-shape-2"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge"><span></span>Clínica Dental Premium · Desde 2020</div>
+      <h1 class="hero-title">Tu sonrisa en<br>manos <em>expertas</em></h1>
+      <p class="hero-subtitle">Tecnología avanzada y atención personalizada para tu salud oral. Transformamos sonrisas con precisión, cuidado y calidez humana.</p>
+      <div class="hero-btns">
+        <a href="#agenda" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5C3.9 3 3 3.9 3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+          Agendar cita
+        </a>
+        <a href="#servicios" class="btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5C21.27 7.61 17 4.5 12 4.5zm0 12.5c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          Ver servicios
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">5<span>+</span></div>
+          <div class="hero-stat-label">Años de experiencia</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">8<span>k</span></div>
+          <div class="hero-stat-label">Pacientes felices</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">4.9<span>★</span></div>
+          <div class="hero-stat-label">Valoración Google</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="floating-badge-2">
+          <span class="stars-inline">★★★★★</span>
+          <span>+500 reseñas</span>
+        </div>
+        <div class="hero-card-img">
+          <div class="hero-img-placeholder">
+            <svg class="tooth-3d float-anim" viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="tg1" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#3EC9B0"/>
+                  <stop offset="100%" stop-color="#ffffff" stop-opacity="0.6"/>
+                </linearGradient>
+              </defs>
+              <path d="M60 8 C38 8 20 22 20 42 C20 55 24 65 26 78 C28 92 30 115 38 125 C42 130 48 128 52 122 C56 116 58 105 60 105 C62 105 64 116 68 122 C72 128 78 130 82 125 C90 115 92 92 94 78 C96 65 100 55 100 42 C100 22 82 8 60 8Z" fill="url(#tg1)" opacity="0.9"/>
+              <path d="M60 8 C38 8 20 22 20 42 C20 55 24 65 26 78 C28 92 30 115 38 125 C42 130 48 128 52 122 C56 116 58 105 60 105 C62 105 64 116 68 122 C72 128 78 130 82 125 C90 115 92 92 94 78 C96 65 100 55 100 42 C100 22 82 8 60 8Z" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+              <ellipse cx="48" cy="32" rx="6" ry="8" fill="white" opacity="0.25"/>
+            </svg>
+          </div>
+        </div>
+        <div style="padding: 0 0.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+            <div>
+              <div style="font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.05rem; color: white;">Próxima cita</div>
+              <div style="font-size: 0.78rem; color: rgba(255,255,255,0.5);">Hoy disponible</div>
+            </div>
+            <div style="background: rgba(62,201,176,0.2); border: 1px solid rgba(62,201,176,0.35); border-radius: 99px; padding: 4px 12px; font-size: 0.75rem; color: #3EC9B0; font-weight: 600;">Abierto</div>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <div style="flex: 1; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 10px; text-align: center; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.borderColor='#3EC9B0'" onmouseout="this.style.borderColor='rgba(255,255,255,0.12)'">
+              <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">Mañana</div>
+              <div style="font-size: 0.9rem; color: white; font-weight: 600;">9:00</div>
+            </div>
+            <div style="flex: 1; background: rgba(62,201,176,0.2); border: 1px solid #3EC9B0; border-radius: 8px; padding: 10px; text-align: center; cursor: pointer;">
+              <div style="font-size: 0.75rem; color: #3EC9B0;">Mañana</div>
+              <div style="font-size: 0.9rem; color: white; font-weight: 600;">11:00</div>
+            </div>
+            <div style="flex: 1; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 10px; text-align: center; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.borderColor='#3EC9B0'" onmouseout="this.style.borderColor='rgba(255,255,255,0.12)'">
+              <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">Mañana</div>
+              <div style="font-size: 0.9rem; color: white; font-weight: 600;">15:00</div>
+            </div>
+          </div>
+        </div>
+        <div class="floating-badge">
+          <div class="floating-badge-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <div class="floating-badge-text">
+            <strong>4.9 / 5.0</strong>
+            <span>Google Reviews</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="video">
+  <div class="container">
+
+    <div class="section-header center">
+      <div class="section-label">Conócenos</div>
+      <h2 class="section-title">Mira nuestro <em>trabajo</em></h2>
+    </div>
+
+    <div class="video-wrapper">
+
+      <blockquote class="instagram-media"
+        data-instgrm-permalink="https://www.instagram.com/p/DOcFPGnjRw1/"
+        data-instgrm-version="14"
+        style="margin:auto;">
+      </blockquote>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- SOBRE NOSOTROS -->
+<section id="sobre">
+  <div class="container">
+    <div class="sobre-grid">
+      <div class="sobre-visual reveal">
+        <div class="sobre-img">
+          <img src="img/clinic.png" style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <div class="sobre-accent">
+          <div class="sobre-accent-num">+5</div>
+          <div class="sobre-accent-text">Años cuidando<br>tu sonrisa</div>
+        </div>
+      </div>
+      <div class="sobre-text reveal">
+        <div class="section-header">
+          <div class="section-label">Quiénes somos</div>
+          <h2 class="section-title">Clínica Dental<br><em>Natural Stetic</em></h2>
+        </div>
+        <p>Desde el año 2020, en Clínica Dental Natural Stetic hemos transformado la salud oral de miles de familias, combinando tecnología de última generación con el calor humano que nos caracteriza.</p>
+        <p>Nuestro equipo de especialistas, formado en las mejores instituciones del país y el exterior, trabaja cada día para ofrecerte tratamientos de alta calidad en un ambiente seguro, cómodo y de absoluta confianza.</p>
+        <p>Somos más que una clínica: somos el lugar donde las sonrisas se construyen con ciencia, arte y dedicación genuina hacia el bienestar de cada paciente.</p>
+        <div class="valores">
+          <div class="valor-item">
+            <div class="valor-icon">
+              <svg viewBox="0 0 24 24" fill="#3EC9B0"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+            </div>
+            <div>
+              <div class="valor-title">Confianza y Transparencia</div>
+              <div class="valor-desc">Comunicación clara en cada diagnóstico y presupuesto sin sorpresas.</div>
+            </div>
+          </div>
+          <div class="valor-item">
+            <div class="valor-icon">
+              <svg viewBox="0 0 24 24" fill="#3EC9B0"><path d="M9.46 6.28L11 3.29c.19-.36.56-.58.95-.58h.1c.39 0 .76.22.95.58l1.54 2.99 3.3.48c.4.06.73.34.86.73.13.38.03.81-.25 1.1l-2.39 2.33.56 3.29c.07.4-.1.8-.43 1.03-.33.24-.77.27-1.12.08L12 13.38l-2.97 1.56c-.37.19-.8.16-1.12-.08-.33-.23-.5-.63-.43-1.03l.56-3.29L5.65 8.2c-.28-.29-.38-.72-.25-1.1.13-.39.46-.67.86-.73l3.2-.09zm1.55 8.09L12 13.38l.99.52.56 3.3L12 16.6l-1.55.6.56-2.83z"/><path d="M20 19H4c-1.1 0-2 .9-2 2v1h20v-1c0-1.1-.9-2-2-2z"/></svg>
+            </div>
+            <div>
+              <div class="valor-title">Innovación Tecnológica</div>
+              <div class="valor-desc">Equipos de última generación: radiografías digitales, escáner 3D, láser dental.</div>
+            </div>
+          </div>
+          <div class="valor-item">
+            <div class="valor-icon">
+              <svg viewBox="0 0 24 24" fill="#3EC9B0"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </div>
+            <div>
+              <div class="valor-title">Cuidado Humano</div>
+              <div class="valor-desc">Atención personalizada que prioriza tu comodidad y bienestar en cada visita.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="section-label">Lo que ofrecemos</div>
+      <h2 class="section-title">Nuestros <em>Servicios</em></h2>
+      <p class="section-subtitle">Tratamientos integrales para toda la familia, con la más alta tecnología y estándares de calidad internacional.</p>
+    </div>
+    <div class="servicios-grid">
+      <div class="servicio-card reveal">
+        <div class="servicio-icon">
+          <svg viewBox="0 0 24 24"><path d="M6 2v6l2 2-2 2v6l3-3 3 3V12l-2-2 2-2V2L9 5 6 2zm12 0l-3 3-3-3v6l2 2-2 2v6l3-3 3 3v-6l-2-2 2-2V2z"/></svg>
+        </div>
+        <div class="servicio-title">Limpieza Dental</div>
+        <p class="servicio-desc">Eliminamos sarro, placa y manchas con ultrasonido y pulido profesional. Prevención es la clave de una sonrisa sana.</p>
+        <a href="#agenda" class="servicio-link">Agendar →</a>
+      </div>
+      <div class="servicio-card reveal">
+        <div class="servicio-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C9.33 2 8 4 8 6c0 1.5.5 3 .5 4.5C8.5 12 7 13 6 14c-1 1-2 2.5-2 4.5 0 2 1.5 3.5 3 3.5.8 0 1.5-.3 2-.8C9.5 22 10.5 22 12 22s2.5 0 3-.8c.5.5 1.2.8 2 .8 1.5 0 3-1.5 3-3.5 0-2-1-3.5-2-4.5-1-1-2.5-2-2.5-3.5C15.5 9 16 7.5 16 6c0-2-1.33-4-4-4z"/></svg>
+        </div>
+        <div class="servicio-title">Ortodoncia</div>
+        <p class="servicio-desc">Alineamos tu dentadura con brackets metálicos, estéticos o alineadores transparentes Invisalign adaptados a tu estilo de vida.</p>
+        <a href="#agenda" class="servicio-link">Agendar →</a>
+      </div>
+      <div class="servicio-card reveal">
+        <div class="servicio-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm-1 5v2H9v2h2v2H9v2h2v2h2v-2h2v-2h-2v-2h2V8h-2V6h-2v2z"/></svg>
+        </div>
+        <div class="servicio-title">Blanqueamiento Dental</div>
+        <p class="servicio-desc">Recupera el blanco natural de tus dientes en una sola sesión con nuestra tecnología LED de alta potencia y geles profesionales.</p>
+        <a href="#agenda" class="servicio-link">Agendar →</a>
+      </div>
+      <div class="servicio-card reveal">
+        <div class="servicio-icon">
+          <svg viewBox="0 0 24 24"><path d="M11 7H6v2h5V7zm0 4H6v2h5v-2zm6-4h-4v2h4V7zm0 4h-4v2h4v-2zm2-8H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM5 17H3v-2h2v2zm14 0H7v-2h12v2zm2 0h-2v-2h2v2z"/></svg>
+        </div>
+        <div class="servicio-title">Implantes Dentales</div>
+        <p class="servicio-desc">Reemplazamos dientes perdidos con implantes de titanio de alta durabilidad que se integran perfectamente a tu estructura ósea.</p>
+        <a href="#agenda" class="servicio-link">Agendar →</a>
+      </div>
+      <div class="servicio-card reveal">
+        <div class="servicio-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <div class="servicio-title">Diseño de Sonrisa</div>
+        <p class="servicio-desc">Transformamos tu sonrisa con carillas de porcelana, coronas estéticas y tratamientos combinados para un resultado espectacular.</p>
+        <a href="#agenda" class="servicio-link">Agendar →</a>
+      </div>
+      <div class="servicio-card reveal">
+        <div class="servicio-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </div>
+        <div class="servicio-title">Endodoncia</div>
+        <p class="servicio-desc">Salvamos dientes comprometidos eliminando infecciones internas con técnicas de alta precisión, completamente libre de dolor.</p>
+        <a href="#agenda" class="servicio-link">Agendar →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCTORES -->
+<section id="doctores">
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="section-label">Nuestro equipo</div>
+      <h2 class="section-title">Conoce a nuestro <em>Especialista</em></h2>
+      <p class="section-subtitle">Profesional con amplia trayectoria, formados en las mejores instituciones y apasionados por tu salud oral.</p>
+    </div>
+    <div class="doctor-single">
+      <!-- Doctor 1 -->
+      <div class="doctor-card-single reveal">
+  
+        <div class="doctor-photo-single">
+            <img src="img/doctor1.png">
+        </div>
+
+        <div class="doctor-info-single">
+            <div class="doctor-name">Dr. Cesar Perez</div>
+            <div class="doctor-specialty">Ortodoncia y estética dental</div>
+
+            <p class="doctor-desc">
+            Especialista con más de 10 años de experiencia en el diseño de sonrisas y tratamientos de ortodoncia. 
+            Comprometido con brindar resultados naturales, funcionales y estéticos a cada paciente.
+            </p>
+
+            <div class="doctor-exp">✔ 10 años de experiencia</div>
+
+            <a href="#agenda" class="btn-primary" style="margin-top:20px;">
+            Agendar consulta
+            </a>
+        </div>
+
+        </div>
+      </div>
+      </div>
+    
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section id="testimonios">
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="section-label" style="color: var(--mint); justify-content: center;">Lo que dicen nuestros pacientes</div>
+      <h2 class="section-title" style="color: white;">Testimonios <em>reales</em></h2>
+      <div class="avg-rating">
+        <div class="avg-num">4.9</div>
+        <div class="avg-detail">
+          <div class="avg-stars">★★★★★</div>
+          <div class="avg-count">+500 reseñas en Google</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonios-grid">
+      <div class="testimonio-card reveal">
+        <div class="testimonio-stars">★★★★★</div>
+        <p class="testimonio-text">Excelente atención desde el primer momento. El proceso fue rápido, completamente sin dolor y el resultado superó mis expectativas. La Dra. Laura es increíblemente profesional.</p>
+        <div class="testimonio-author">
+          <div class="testimonio-avatar" style="background: linear-gradient(135deg, #3EC9B0, #2fb89e);">CR</div>
+          <div>
+            <div class="testimonio-name">Carlos Ramírez</div>
+            <div class="testimonio-meta">Paciente verificado · Ortodoncia</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonio-card reveal">
+        <div class="testimonio-stars">★★★★★</div>
+        <p class="testimonio-text">Las instalaciones son impecables y el equipo médico es sumamente profesional. Me realizaron un diseño de sonrisa y quedé completamente maravillada con los resultados.</p>
+        <div class="testimonio-author">
+          <div class="testimonio-avatar" style="background: linear-gradient(135deg, #C9A84C, #e0bc60);">AL</div>
+          <div>
+            <div class="testimonio-name">Andrea López</div>
+            <div class="testimonio-meta">Paciente verificado · Diseño de sonrisa</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonio-card reveal">
+        <div class="testimonio-stars">★★★★★</div>
+        <p class="testimonio-text">Recomiendo totalmente esta clínica. Los implantes quedaron perfectos, el seguimiento post-operatorio fue excepcional y el personal siempre muy atento y amable.</p>
+        <div class="testimonio-author">
+          <div class="testimonio-avatar" style="background: linear-gradient(135deg, #1B3A5C, #2a5580);">JP</div>
+          <div>
+            <div class="testimonio-name">Juan Pérez</div>
+            <div class="testimonio-meta">Paciente verificado · Implantes dentales</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonio-card reveal">
+        <div class="testimonio-stars">★★★★★</div>
+        <p class="testimonio-text">Vine con mucho miedo al dentista y salí completamente transformada. El equipo hizo todo lo posible para que me sintiera cómoda. El blanqueamiento quedó espectacular.</p>
+        <div class="testimonio-author">
+          <div class="testimonio-avatar" style="background: linear-gradient(135deg, #9b59b6, #c77dbd);">MV</div>
+          <div>
+            <div class="testimonio-name">María Vargas</div>
+            <div class="testimonio-meta">Paciente verificada · Blanqueamiento</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonio-card reveal">
+        <div class="testimonio-stars">★★★★★</div>
+        <p class="testimonio-text">El Dr Cesar es un especialista excepcional. Me realizaron una endodoncia y no sentí absolutamente nada. Tecnología de punta y un trato humano difícil de encontrar.</p>
+        <div class="testimonio-author">
+          <div class="testimonio-avatar" style="background: linear-gradient(135deg, #27ae60, #55cc88);">RG</div>
+          <div>
+            <div class="testimonio-name">Ricardo González</div>
+            <div class="testimonio-meta">Paciente verificado · Endodoncia</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonio-card reveal">
+        <div class="testimonio-stars">★★★★★</div>
+        <p class="testimonio-text">Llevo a toda mi familia aquí desde hace 4 años. La atención es siempre de primer nivel, puntual y los resultados hablan por sí solos. No cambiaría esta clínica por ninguna otra.</p>
+        <div class="testimonio-author">
+          <div class="testimonio-avatar" style="background: linear-gradient(135deg, #e67e22, #f0a050);">PS</div>
+          <div>
+            <div class="testimonio-name">Patricia Suárez</div>
+            <div class="testimonio-meta">Paciente verificada · Odontología general</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section id="galeria">
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="section-label">Nuestras instalaciones</div>
+      <h2 class="section-title">Una clínica pensada<br>para <em>tu comodidad</em></h2>
+    </div>
+    <div class="galeria-grid reveal">
+      <div class="galeria-item">
+        <div class="galeria-inner gi-1">
+          <svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="60" width="140" height="100" rx="10" fill="white" opacity="0.3"/>
+            <rect x="30" y="70" width="60" height="80" rx="6" fill="white" opacity="0.2"/>
+            <rect x="100" y="70" width="50" height="35" rx="6" fill="white" opacity="0.25"/>
+            <rect x="100" y="115" width="50" height="35" rx="6" fill="white" opacity="0.25"/>
+            <rect x="40" y="90" width="40" height="25" rx="4" fill="white" opacity="0.3"/>
+            <circle cx="90" cy="30" r="22" fill="white" opacity="0.2"/>
+            <rect x="82" y="18" width="16" height="5" rx="2.5" fill="white" opacity="0.5"/>
+            <rect x="87.5" y="12" width="5" height="16" rx="2.5" fill="white" opacity="0.5"/>
+          </svg>
+          <div class="galeria-overlay"><span class="galeria-label">Sala de espera</span></div>
+        </div>
+      </div>
+      <div class="galeria-item">
+        <div class="galeria-inner gi-2">
+          <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <rect x="15" y="40" width="70" height="40" rx="8" fill="white" opacity="0.35"/>
+            <rect x="20" y="55" width="60" height="8" rx="4" fill="white" opacity="0.3"/>
+            <circle cx="50" cy="30" r="12" fill="white" opacity="0.3"/>
+            <rect x="46" y="22" width="8" height="2" rx="1" fill="white" opacity="0.6"/>
+            <rect x="48" y="19" width="4" height="8" rx="2" fill="white" opacity="0.6"/>
+          </svg>
+          <div class="galeria-overlay"><span class="galeria-label">Consultorio</span></div>
+        </div>
+      </div>
+      <div class="galeria-item">
+        <div class="galeria-inner gi-3">
+          <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="45" r="25" fill="white" opacity="0.25"/>
+            <rect x="38" y="58" width="24" height="20" rx="6" fill="white" opacity="0.3"/>
+            <path d="M40 40 Q50 50 60 40" stroke="white" stroke-width="2.5" fill="none" opacity="0.6" stroke-linecap="round"/>
+            <circle cx="40" cy="37" rx="4" ry="3" fill="white" opacity="0.5"/>
+            <circle cx="60" cy="37" rx="4" ry="3" fill="white" opacity="0.5"/>
+          </svg>
+          <div class="galeria-overlay"><span class="galeria-label">Antes & Después</span></div>
+        </div>
+      </div>
+      <div class="galeria-item">
+        <div class="galeria-inner gi-4">
+          <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="35" width="60" height="40" rx="8" fill="white" opacity="0.3"/>
+            <circle cx="50" cy="55" r="10" fill="white" opacity="0.35"/>
+            <rect x="45" y="28" width="10" height="20" rx="5" fill="white" opacity="0.4"/>
+          </svg>
+          <div class="galeria-overlay"><span class="galeria-label">Rayos X Digital</span></div>
+        </div>
+      </div>
+      <div class="galeria-item">
+        <div class="galeria-inner gi-5">
+          <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <rect x="15" y="30" width="70" height="50" rx="10" fill="white" opacity="0.3"/>
+            <circle cx="50" cy="42" r="8" fill="white" opacity="0.4"/>
+            <rect x="30" y="58" width="40" height="6" rx="3" fill="white" opacity="0.35"/>
+            <rect x="35" y="68" width="30" height="4" rx="2" fill="white" opacity="0.25"/>
+          </svg>
+          <div class="galeria-overlay"><span class="galeria-label">Tecnología Láser</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGENDA TU CITA -->
+<section id="agenda">
+  <div class="container">
+    <div class="agenda-grid">
+      <div class="agenda-info reveal">
+        <div class="section-label" style="color: var(--mint-light);">Reserva tu espacio</div>
+        <h2 class="section-title" style="color: white;">Agenda tu <em>cita</em><br>hoy mismo</h2>
+        <p class="section-subtitle" style="color: rgba(255,255,255,0.55);">Tu sonrisa perfecta está a un paso. Agenda en minutos y recibe confirmación inmediata por WhatsApp.</p>
+        <div class="agenda-bullets">
+          <div class="agenda-bullet"><div class="bullet-dot"></div>Confirmación inmediata por WhatsApp</div>
+          <div class="agenda-bullet"><div class="bullet-dot"></div>Primera consulta de diagnóstico gratuita</div>
+          <div class="agenda-bullet"><div class="bullet-dot"></div>Recordatorio 24 horas antes de tu cita</div>
+          <div class="agenda-bullet"><div class="bullet-dot"></div>Opciones de financiamiento disponibles</div>
+          <div class="agenda-bullet"><div class="bullet-dot"></div>Horarios flexibles de lunes a sábado</div>
+        </div>
+      </div>
+      <div class="agenda-form reveal">
+        <div style="margin-bottom: 1.5rem;">
+          <div style="font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: white; margin-bottom: 4px;">Formulario de Agendamiento</div>
+          <div style="font-size: 0.82rem; color: rgba(255,255,255,0.4);">Completa el formulario y nos contactamos contigo</div>
+        </div>
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nombre completo</label>
+              <input type="text" placeholder="Ej: María García" required>
+            </div>
+            <div class="form-group">
+              <label>Teléfono</label>
+              <input type="tel" placeholder="+57 300 000 0000" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Correo electrónico</label>
+            <input type="email" placeholder="tucorreo@email.com">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Servicio</label>
+              <select required>
+                <option value="" disabled selected>Seleccionar...</option>
+                <option>Limpieza dental</option>
+                <option>Ortodoncia</option>
+                <option>Blanqueamiento</option>
+                <option>Implantes dentales</option>
+                <option>Diseño de sonrisa</option>
+                <option>Endodoncia</option>
+                <option>Consulta general</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Fecha preferida</label>
+              <input type="date" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Mensaje (opcional)</label>
+            <textarea placeholder="Cuéntanos sobre tu consulta..." rows="3" style="resize: none;"></textarea>
+          </div>
+          <button type="submit" class="btn-submit">
+            Agendar mi cita ahora
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="container">
+    <div class="contacto-grid">
+      <div class="reveal">
+        <div class="section-header">
+          <div class="section-label">Encuéntranos</div>
+          <h2 class="section-title">Información de <em>Contacto</em></h2>
+          <p class="section-subtitle">Estamos ubicados en el corazón de la ciudad, con fácil acceso y amplio parqueadero disponible.</p>
+        </div>
+        <div class="contacto-items">
+          <div class="contacto-item">
+            <div class="contacto-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <div>
+              <div class="contacto-item-title">Dirección</div>
+              <div class="contacto-item-text">Cl. 8 #16-66, Libraida, Zarzal, Valle del Cauca</div>
+            </div>
+          </div>
+          <div class="contacto-item">
+            <div class="contacto-icon">
+              <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            </div>
+            <div>
+              <div class="contacto-item-title">Teléfono</div>
+              <div class="contacto-item-text"><a href="tel:+573104574477">+57 3104574477</a></div>
+            </div>
+          </div>
+          <div class="contacto-item">
+            <div class="contacto-icon">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M13.5 2C7.149 2 2 7.149 2 13.5c0 1.988.521 3.853 1.432 5.466L2 22l3.162-1.398C6.62 21.484 8.483 22 10.5 22H13.5C19.851 22 25 16.851 25 10.5S19.851 2 13.5 2z"/></svg>
+            </div>
+            <div>
+              <div class="contacto-item-title">WhatsApp</div>
+              <div class="contacto-item-text"><a href="https://wa.me/573104574477" target="_blank">+57 3104574477 – Chat directo</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="horarios" style="margin-top: 2rem;">
+          <div style="font-weight: 600; font-size: 0.9rem; color: var(--navy); margin-bottom: 0.5rem;">Horarios de atención</div>
+          <div class="horario-row"><span>Lunes – Viernes</span><span class="horario-open">7:00 AM – 7:00 PM</span></div>
+          <div class="horario-row"><span>Sábado</span><span class="horario-open">8:00 AM – 3:00 PM</span></div>
+          <div class="horario-row"><span>Domingo</span><span>Cerrado</span></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md);">
+          <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d248.62998839100408!2d-76.07661333790989!3d4.396165372320039!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sco!4v1774557230782!5m2!1ses!2sco"
+              width="100%"
+              height="420"
+              style="border:0; display:block;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="redes">
+  <div class="container">
+    
+    <div class="section-header center">
+      <div class="section-label">Síguenos</div>
+      <h2 class="section-title">Conecta con <em>Nosotros</em></h2>
+      <p class="section-subtitle">
+        Mantente al día con nuestros tratamientos, resultados y consejos de salud dental.
+      </p>
+    </div>
+
+    <div class="redes-container">
+
+      <a href="https://www.instagram.com/natural.stetic_cesarperez/" class="red-social">
+        <div class="icon">
+          <!-- Instagram -->
+          <svg viewBox="0 0 24 24"><path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm5 5a5 5 0 110 10 5 5 0 010-10zm6.5-.88a1.38 1.38 0 11-2.75 0 1.38 1.38 0 012.75 0z"/></svg>
+        </div>
+        <span>Instagram</span>
+      </a>
+
+      <a href="https://www.facebook.com/cesar.perez.3705157" class="red-social">
+        <div class="icon">
+          <!-- Facebook -->
+          <svg viewBox="0 0 24 24"><path d="M13 3h4V0h-4c-2.76 0-5 2.24-5 5v3H5v4h3v12h4V12h3l1-4h-4V5c0-.55.45-1 1-1z"/></svg>
+        </div>
+        <span>Facebook</span>
+      </a>
+
+      <a href="https://wa.me/573104574477" class="red-social">
+        <div class="icon">
+          <!-- WhatsApp -->
+          <svg viewBox="0 0 24 24"><path d="M20.52 3.48A11.91 11.91 0 0012.01 0C5.38 0 .02 5.36.02 12c0 2.11.55 4.17 1.6 5.99L0 24l6.2-1.62A11.93 11.93 0 0012.01 24c6.63 0 11.99-5.36 11.99-12 0-3.2-1.25-6.21-3.48-8.52zM12 21.8c-1.86 0-3.68-.5-5.27-1.44l-.38-.22-3.68.96.98-3.59-.25-.37A9.74 9.74 0 012.2 12C2.2 6.6 6.6 2.2 12 2.2c2.6 0 5.04 1.01 6.87 2.84A9.68 9.68 0 0121.8 12c0 5.4-4.4 9.8-9.8 9.8zm5.36-7.38c-.29-.15-1.72-.85-1.99-.95-.27-.1-.47-.15-.66.15-.2.29-.76.95-.93 1.15-.17.2-.34.22-.63.07-.29-.15-1.22-.45-2.33-1.44-.86-.77-1.44-1.72-1.61-2.01-.17-.29-.02-.45.13-.6.14-.14.29-.34.44-.51.15-.17.2-.29.29-.48.1-.2.05-.37-.02-.52-.07-.15-.66-1.6-.91-2.2-.24-.58-.49-.5-.66-.51h-.56c-.2 0-.52.07-.8.37-.27.29-1.04 1.02-1.04 2.48 0 1.45 1.07 2.85 1.22 3.05.15.2 2.1 3.2 5.08 4.49.71.31 1.26.5 1.69.64.71.22 1.36.19 1.87.12.57-.08 1.72-.7 1.96-1.38.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.56-.35z"/></svg>
+        </div>
+        <span>WhatsApp</span>
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#hero" class="footer-logo">
+          <div class="footer-logo-icon">
+            <svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M12 2C9.33 2 8 4 8 6c0 1.5.5 3 .5 4.5C8.5 12 7 13 6 14c-1 1-2 2.5-2 4.5 0 2 1.5 3.5 3 3.5.8 0 1.5-.3 2-.8C9.5 22 10.5 22 12 22s2.5 0 3-.8c.5.5 1.2.8 2 .8 1.5 0 3-1.5 3-3.5 0-2-1-3.5-2-4.5-1-1-2.5-2-2.5-3.5C15.5 9 16 7.5 16 6c0-2-1.33-4-4-4z"/></svg>
+          </div>
+          <span class="footer-logo-text">Natural Stetic</span>
+        </a>
+        <p class="footer-desc">Más de 5 años transformando sonrisas con tecnología avanzada y el cuidado humano que cada paciente merece.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01" stroke="rgba(255,255,255,0.65)" stroke-width="2" fill="none"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="TikTok">
+            <svg viewBox="0 0 24 24"><path d="M9 12a4 4 0 104 4V4a5 5 0 005 5"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="rgba(255,255,255,0.65)"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Servicios</div>
+        <div class="footer-links">
+          <a href="#servicios">Limpieza dental</a>
+          <a href="#servicios">Ortodoncia</a>
+          <a href="#servicios">Blanqueamiento</a>
+          <a href="#servicios">Implantes</a>
+          <a href="#servicios">Diseño de sonrisa</a>
+          <a href="#servicios">Endodoncia</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Clínica</div>
+        <div class="footer-links">
+          <a href="#sobre">Sobre nosotros</a>
+          <a href="#doctores">Nuestros doctores</a>
+          <a href="#galeria">Galería</a>
+          <a href="#testimonios">Testimonios</a>
+          <a href="#contacto">Contacto</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Legal</div>
+        <div class="footer-links">
+          <a href="#">Política de privacidad</a>
+          <a href="#">Términos de servicio</a>
+          <a href="#">Aviso de cookies</a>
+          <a href="#">Habeas data</a>
+        </div>
+        <div style="margin-top: 1.5rem;">
+          <a href="#agenda" class="btn-primary" style="font-size: 0.82rem; padding: 10px 20px; display: inline-flex;">
+            Agendar cita
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 <span>Natural Stetic</span>. Todos los derechos reservados.</p>
+      <p class="footer-copy">Diseñado con ❤️ para tu salud oral</p>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/573104574477" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM13.5 2C7.149 2 2 7.149 2 13.5c0 1.988.521 3.853 1.432 5.466L2 22l3.162-1.398C6.62 21.484 8.483 22 10.5 22H13.5C19.851 22 25 16.851 25 10.5S19.851 2 13.5 2z"/></svg>
+</a>
+
+<script>
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Stagger siblings
+  document.querySelectorAll('.servicios-grid, .doctores-grid, .testimonios-grid').forEach(grid => {
+    grid.querySelectorAll('.reveal').forEach((card, i) => {
+      card.style.transitionDelay = `${i * 80}ms`;
+    });
+  });
+
+  // Form submission
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn-submit');
+    btn.textContent = '¡Cita agendada! Te contactamos pronto';
+    btn.style.background = 'linear-gradient(135deg, #27ae60, #2ecc71)';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = 'Agendar mi cita ahora';
+      btn.style.background = '';
+      btn.disabled = false;
+      e.target.reset();
+    }, 4000);
+  }
+
+  // Mobile menu
+  let menuOpen = false;
+  function toggleMenu() {
+    menuOpen = !menuOpen;
+    const links = document.querySelector('.nav-links');
+    const ham = document.querySelector('.hamburger');
+    if (menuOpen) {
+      links.style.cssText = `
+        display: flex !important; flex-direction: column; position: fixed;
+        top: 68px; left: 0; right: 0;
+        background: rgba(13,27,42,0.97); backdrop-filter: blur(20px);
+        padding: 1.5rem 4%; gap: 0;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        z-index: 999; animation: slideDown 0.25s ease;
+      `;
+      links.querySelectorAll('li').forEach(li => {
+        li.style.cssText = 'padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06);';
+      });
+      links.querySelectorAll('a').forEach(a => {
+        if (!a.classList.contains('nav-cta')) a.style.color = 'rgba(255,255,255,0.85)';
+        a.addEventListener('click', closeMenu);
+      });
+      ham.style.cssText = 'display:flex;';
+      // Animate hamburger to X
+      const spans = ham.querySelectorAll('span');
+      spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+      spans[1].style.opacity = '0';
+      spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+    } else {
+      closeMenu();
+    }
+  }
+  function closeMenu() {
+    menuOpen = false;
+    const links = document.querySelector('.nav-links');
+    const ham = document.querySelector('.hamburger');
+    links.style.display = '';
+    const spans = ham.querySelectorAll('span');
+    spans[0].style.transform = '';
+    spans[1].style.opacity = '';
+    spans[2].style.transform = '';
+  }
+  // Close menu on resize
+  window.addEventListener('resize', () => { if (window.innerWidth > 768) closeMenu(); });
+
+  // Animate number counters
+  function animateCounters() {
+    document.querySelectorAll('.hero-stat-num').forEach(el => {
+      const text = el.innerHTML;
+      const num = parseFloat(text);
+      if (isNaN(num)) return;
+      let start = 0;
+      const suffix = text.replace(/[\d.]/g, '');
+      const step = num / 50;
+      const timer = setInterval(() => {
+        start += step;
+        if (start >= num) { el.innerHTML = num + suffix; clearInterval(timer); return; }
+        el.innerHTML = (Number.isInteger(num) ? Math.floor(start) : start.toFixed(1)) + suffix;
+      }, 30);
+    });
+  }
+  setTimeout(animateCounters, 500);
+</script>
+<script async src="//www.instagram.com/embed.js"></script>
+</body>
+</html>
